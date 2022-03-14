@@ -1,0 +1,17 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown_content {
+  position: absolute;
+  z-index: 1;
+  background-color: #fdfdfd;
+  border-radius: 5px;
+  border: solid 1px #cfcfcf;
+  padding: 5px;
+}
+
+.dropdown_option {
+  cursor: pointer;
+}
