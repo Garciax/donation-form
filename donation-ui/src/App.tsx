@@ -1,9 +1,11 @@
 import React from "react";
-import "./App.css";
-import DonationPage from "./page/DonationPage/DonationPage";
+import DonationForm from "./components/DonationForm/DonationForm";
 
+/**
+ * Входная точка в приложение
+ */
 function App() {
-  return <DonationPage />;
+  return <DonationForm />;
 }
 
 export default App;

@@ -1,24 +1,14 @@
 {
   "name": "donation-back",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "nest build",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest start",
-    "start:dev": "nest start --watch",
-    "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
-    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:cov": "jest --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "build:back": "nest build && cp ./.env ./dist/.env",
+    "build:ui": "mkdir ./dist/client && cd ../donation-ui && npm run build && cp -R ./build/* ../donation-back/dist/client",
+    "build": "npm run prebuild && npm run build:back && npm run build:ui",
+    "start": "nest start"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
@@ -26,6 +16,7 @@
     "@nestjs/core": "^8.0.0",
     "@nestjs/mongoose": "^9.0.2",
     "@nestjs/platform-express": "^8.0.0",
+    "@nestjs/serve-static": "^2.2.2",
     "mongoose": "^6.2.6",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",

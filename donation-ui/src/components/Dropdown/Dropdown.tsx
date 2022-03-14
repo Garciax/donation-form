@@ -34,7 +34,7 @@ const Dropdown = ({
         {option}
       </div>
     ));
-  }, [onChange, options]);
+  }, [onOptionChange, options]);
 
   return (
     <div className={cn.dropdown}>

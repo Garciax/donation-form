@@ -1,4 +1,4 @@
-import React, {MouseEventHandler} from "react";
+import React from "react";
 import classNames from "classnames";
 import cn from "./Button.module.scss";
 
@@ -12,6 +12,9 @@ const buttonTypeCn = {
   [ButtonType.AMOUNT]: cn.amount_button,
 };
 
+/**
+ * Компонент кнопки
+ */
 const Button = ({
   type,
   children,

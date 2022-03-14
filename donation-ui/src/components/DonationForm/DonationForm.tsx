@@ -54,7 +54,6 @@ const DonationForm = () => {
       );
       setAmount(newValue);
     }
-
     setPreviousCurrency(currency);
   }, [currency]);
 
@@ -64,27 +63,30 @@ const DonationForm = () => {
 
   const onAmountChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const value = e.target.value;
-      setAmount(parseInt(value));
+      const value = Number(e.target.value);
+      value ? setAmount(value) : setAmount(0);
     },
     []
   );
 
-  const renderPresetButton = (value: number) => {
-    const formattedValue = formatAmount(value, currencyInfo.symbol);
-    return (
-      <Button
-        isActive={amount === value}
-        type={ButtonType.AMOUNT}
-        onClick={() => {
-          setAmount(value);
-        }}
-        key={`key-${value}`}
-      >
-        {formattedValue}
-      </Button>
-    );
-  };
+  const renderPresetButton = useCallback(
+    (value: number) => {
+      const formattedValue = formatAmount(value, currencyInfo.symbol);
+      return (
+        <Button
+          isActive={amount === value}
+          type={ButtonType.AMOUNT}
+          onClick={() => {
+            setAmount(value);
+          }}
+          key={`key-${value}`}
+        >
+          {formattedValue}
+        </Button>
+      );
+    },
+    [amount, currencyInfo.symbol]
+  );
 
   return (
     <div className={cn.container}>
@@ -106,7 +108,6 @@ const DonationForm = () => {
         />
       </div>
       <div className={cn.donate_button_container}>
-        {/*  TODO вынести в отдельный компонент*/}
         <Button onClick={sendRequest} type={ButtonType.DONATE}>
           DONATE
         </Button>

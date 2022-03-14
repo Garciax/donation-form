@@ -2,7 +2,11 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Donation, DonationSchema } from './schemas/donation.schema';
 import { DonationService } from './donation.service';
+import { DonationController } from './donation.controllers';
 
+/**
+ * Модуль пожертовования
+ */
 @Module({
   imports: [
     MongooseModule.forFeature([
@@ -10,5 +14,6 @@ import { DonationService } from './donation.service';
     ]),
   ],
   providers: [DonationService],
+  controllers: [DonationController],
 })
 export class DonationModule {}

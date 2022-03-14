@@ -1,7 +1,6 @@
 import cn from "./Input.module.scss";
 import React, { ReactNode } from "react";
 
-
 /**
  * Компонент ввода данных
  */
@@ -22,7 +21,11 @@ const Input = ({
         <div className={cn.leftComponent_container}>{leftComponent}</div>
       )}
       <div className={cn.input_container}>
-        <input value={value} className={cn.input} onChange={onChange} type={"number"} />
+        <input
+          value={Number(value.toString())}
+          className={cn.input}
+          onChange={onChange}
+        />
       </div>
       {rightComponent && (
         <div className={cn.rightComponent_container}>{rightComponent}</div>

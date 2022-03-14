@@ -3,7 +3,10 @@ import { Document } from 'mongoose';
 
 export type DonationDocument = Donation & Document;
 
-@Schema()
+/**
+ * Схема сущности пожертвования
+ */
+@Schema({ collection: 'donation' })
 export class Donation {
   @Prop()
   amount: number;
